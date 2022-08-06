@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Rating App</title>
+</head>
+<body>
+  <h1>Movies App!</h1>
+  <p>Enter a movie you've seen along with a rating from 1 to 10.</p>
+  <form action="#">
+    <label for="movie">Movie: </label>
+    <input type="text" id="movie" name="movie">
+    <label for="rating">Rating: </label>
+    <input type="number" id="rating" name="rating" min="1" max="10">
+    <!-- <input type="" name="age" id="age"  step="2"> -->
+    <button type="button" id="add-movie">Add Movie</button>
+  </form>
+  <hr>
+  <section id="movies-list"></section>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script>
+    // Add movie and rating to document when add button is clicked
+    $('#add-movie').on('click', () => {
+      let movieText = $('#movie').val();
+      let ratingNum = $('#rating').val();
+      let $newMovie = $(`<p>${movieText}: ${ratingNum} <button>Remove</button></p>`)
+      $('#movies-list').append($newMovie);
+      $('#movie').val('');
+      $('#rating').val('');  
+    });
+
+    // Remove movie and rating from document when remove button is clicked
+    $('#movies-list').on('click', function(e) {
+      console.log($(e.target));
+      $(e.target).parent().remove();
+    });
+  </script>
+</body>
+</html>
