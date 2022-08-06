@@ -74,8 +74,48 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
-  // Add your code here!
+  // 1. When the DOM is ready, console.log the message “Let’s get ready to party 
+  //    with jQuery!”
+  $(document).ready(console.log("Let’s get ready to party with jQuery!"));
+  
+  // 2. Give all images inside of an article tag the class of image-center (this 
+  //    class is defined inside of the style tag in the head).
+  $('article img').addClass('image-center');
+
+  // 3. Remove the last paragraph in the article.
+  $('article p').last().remove();
+
+  // 4. Set the font size of the title to be a random pixel size from 0 to 100.
+  let randomNum = Math.floor(Math.random()*100);
+  $('#title').css('fontSize', `${randomNum}px`);
+
+  // 5. Add an item to the list; it can say whatever you want.
+  $('ol').append('<li>Usually the items on a list are succinct.</li>');
+  
+  // 6. Scratch that; the list is silly. Empty the aside and put a paragraph in 
+  //    it apologizing for the list’s existence.
+  $('aside').html('<p>I apologize for the list\'s prior existence.</p>');  
+  
+  // 7. When you change the numbers in the three inputs on the bottom, the 
+  //    background color of the body should change to match whatever the three 
+  //    values in the inputs are.
+  $('.form-control').on('input', () => {
+    let red = $('input').eq(0).val();
+    let blue = $('input').eq(1).val();
+    let green = $('input').eq(2).val();
+    $('body').css('backgroundColor', `rgb(${red},${green},${blue})`);
+  });
+  
+  // 8. Add an event listener so that when you click on the image, it is removed 
+  //    from the DOM.
+  $('img').on('click', () => $('img').remove());
+
 </script>
 </body>
 
 </html>
+
+
+
+
+
